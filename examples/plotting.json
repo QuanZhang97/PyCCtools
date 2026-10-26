@@ -1,0 +1,7 @@
+{
+  "CORRELATION_DIR": "coda_processed",
+  "FIG_DIR": "fig",
+  "THEORETICAL_ARRIVAL_FILE": "results/phase_pair_time.txt",
+  "DISPLAY_DISTANCE_RANGE_DEG": [0.0, 180.0],
+  "DISPLAY_LAG_RANGE_SEC": [0.0, 3600.0]
+}

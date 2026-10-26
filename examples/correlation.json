@@ -1,0 +1,10 @@
+{
+  "CATALOGUE_FILE": "catalogue/YOUR_RUN/selected_events.xml",
+  "STATION_RUN_DIR": "stations/YOUR_RUN",
+  "WAVEFORM_RUN_DIR": "waveforms/YOUR_RUN",
+  "CORRELATION_DIR": "coda_processed",
+  "START_HOURS": 3.0,
+  "END_HOURS": 10.0,
+  "N_PREPROCESS_WORKERS": 4,
+  "N_STACK_WORKERS": 4
+}
