@@ -1,6 +1,6 @@
-"""Plotting stage, adapted from user-supplied 05_plot_coda_correlation_and_wiggles.py.
+"""Coda-correlation and wiggle plotting stage.
 
-No processing occurs at import. Settings use the original uppercase names.
+No processing occurs at import. Settings use uppercase names.
 Each run has independent settings, helpers and FFT worker state.
 """
 from ._config import setting, validate_settings

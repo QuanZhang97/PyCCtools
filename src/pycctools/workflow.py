@@ -5,7 +5,7 @@ def run_workflow(*, event_settings, station_settings=None, download_settings=Non
                  correlation_settings=None, plot_settings=None):
     """Run the complete online workflow and return all stage output paths.
 
-    Settings dictionaries retain the original uppercase names. Input paths are
+    Settings dictionaries use uppercase names. Input paths are
     supplied by the preceding stage and cannot be overridden by a later stage.
     Online stages can issue many requests; call individual modules for partial
     runs or work with previously downloaded data.

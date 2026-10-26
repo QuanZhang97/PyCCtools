@@ -75,13 +75,13 @@ lag = t(phase_b) - t(phase_a)
 
 Times and lags are in seconds. For each phase, PyCCtools selects the earliest arrival at the requested epicentral distance and source depth. A point with no valid ray path is stored as `NaN`; the package does not interpolate across a shadow zone. Invalid phase names, model names, or numeric inputs raise an error. The saved text file records the model, phases, source depth, lag convention, and branch-selection rule in its header.
 
-This function produces a same-distance travel-time-difference reference curve, following the original notebook. It is not a matched-ray-parameter correlation-phase prediction, automatic detector, or phase picker. Before interpreting a line on a correlation plot, confirm that the phase geometry and branch selection are appropriate for the correlation wavefield under study.
+This function produces a same-distance travel-time-difference reference curve. It is not a matched-ray-parameter correlation-phase prediction, automatic detector, or phase picker. Before interpreting a line on a correlation plot, confirm that the phase geometry and branch selection are appropriate for the correlation wavefield under study.
 
 Negative theoretical lags are retained. The plotting stage defaults to `DISPLAY_LAG_RANGE_SEC=(0, 3600)`, so set a negative lower bound when you need to display the negative branch.
 
 ## Stage-by-stage workflow
 
-The five processing stages retain the uppercase setting names from the original scripts, now passed as keyword arguments. Unknown settings raise an error. Each invocation has its own settings and FFT worker buffers.
+The five processing stages use uppercase setting names passed as keyword arguments. Unknown settings raise an error. Each invocation has its own settings and FFT worker buffers.
 
 Inspect the supported settings for any stage with:
 
@@ -279,23 +279,7 @@ Processing logs distinguish rejected waveforms. Download logs distinguish comple
 python examples/package_workflow/run_all.py
 ```
 
-The numbered scripts write actual output paths to `example_run/workflow_state.json`. This removes the hard-coded catalogue, station, waveform, and correlation run hashes used by the original scripts. See the [package-workflow guide](examples/package_workflow/README.md) for the individual commands and initial smoke-run limits.
-
-## Original workflow examples
-
-The user-supplied scripts and notebook are preserved unchanged in [`examples/original_workflow`](examples/original_workflow). They provide the original scientific workflow and are useful for comparing the package API with the source material:
-
-| Original file | Package equivalent |
-| --- | --- |
-| `00_I-J_traveltime_diff_calc.ipynb` | `pycctools.traveltime` |
-| `01_select_seismic_events.py` | `pycctools.events` |
-| `02_select_stations_and_great_circles.py` | `pycctools.stations` |
-| `03_download_coda_and_station_pairs.py` | `pycctools.download` |
-| `04_coda_correlation.py` | `pycctools.correlation` |
-| `05_plot_coda_correlation_and_wiggles.py` | `pycctools.plotting` |
-| `libgcc.py` | `pycctools.signal` |
-
-The original examples retain their original constants, hard-coded run paths, and behavior. Use `examples/package_workflow` for the corrected, configurable version.
+The numbered scripts write actual output paths to `example_run/workflow_state.json`, so catalogue, station, waveform, and correlation run hashes do not need to be hard-coded. See the [package-workflow guide](examples/package_workflow/README.md) for the individual commands and initial smoke-run limits.
 
 ## Validation
 
@@ -308,9 +292,9 @@ The test suite covers PREM and alternative models/phases, absent arrivals, inval
 
 The mocked-service tests validate the local processing logic but do not prove that a live remote service is currently available.
 
-## Migration notes
+## Implementation notes
 
-The original `01`–`05` scripts correspond to the five workflow stages. `libgcc.py` is incorporated into `signal.py`; the legacy `GCC`, `NormalizeFilter`, and related names remain available there, together with snake-case aliases. The duplicate `PKIKP` and `PKJKP` notebook functions are replaced by the generic `travel_time` and `phase_pair_curve` APIs.
+`signal.py` provides `GCC`, `NormalizeFilter`, and related names together with snake-case aliases. The generic `travel_time` and `phase_pair_curve` APIs support `PKIKP`/`PKJKP` and other TauP phase pairs.
 
 The package also fixes several issues found during migration:
 
@@ -321,7 +305,7 @@ The package also fixes several issues found during migration:
 - A smoothing window longer than a short signal no longer causes an array-length mismatch.
 - Missing theoretical arrivals remain `NaN`, so the plotting code does not draw a line across an absent branch or shadow zone.
 
-The scientific selection criteria and output/log structure from the supplied scripts are otherwise retained where practical.
+The scientific selection criteria and output/log structure are retained where practical.
 
 ## Network destinations
 

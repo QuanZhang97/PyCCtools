@@ -1,6 +1,6 @@
-"""Correlation stage, adapted from user-supplied 04_coda_correlation.py.
+"""Coda cross-correlation and stacking stage.
 
-No processing occurs at import. Settings use the original uppercase names.
+No processing occurs at import. Settings use uppercase names.
 Each run has independent settings, helpers and FFT worker state.
 """
 from ._config import setting, validate_settings

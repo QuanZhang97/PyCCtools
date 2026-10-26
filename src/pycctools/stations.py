@@ -1,6 +1,6 @@
-"""Stations stage, adapted from user-supplied 02_select_stations_and_great_circles.py.
+"""Station selection and great-circle geometry stage.
 
-No processing occurs at import. Settings use the original uppercase names.
+No processing occurs at import. Settings use uppercase names.
 Each run has independent settings, helpers and FFT worker state.
 """
 from ._config import setting, validate_settings

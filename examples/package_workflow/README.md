@@ -1,6 +1,6 @@
 # Package-based workflow examples
 
-These examples mirror the original `00`–`05` workflow while calling the reusable `pycctools` APIs. The scripts record actual output paths in `example_run/workflow_state.json`, so a later step does not need a hard-coded run hash.
+These are the maintained `00`–`05` examples for the reusable `pycctools` APIs. The scripts record actual output paths in `example_run/workflow_state.json`, so a later step does not need a hard-coded run hash.
 
 Run all commands from the repository root after installing the package:
 

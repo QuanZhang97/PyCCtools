@@ -1,6 +1,6 @@
-"""Events stage, adapted from user-supplied 01_select_seismic_events.py.
+"""Event catalogue selection stage.
 
-No processing occurs at import. Settings use the original uppercase names.
+No processing occurs at import. Settings use uppercase names.
 Each run has independent settings, helpers and FFT worker state.
 """
 from ._config import setting, validate_settings
