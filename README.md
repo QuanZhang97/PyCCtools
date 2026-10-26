@@ -271,6 +271,16 @@ The stacked NPZ files include:
 
 Processing logs distinguish rejected waveforms. Download logs distinguish complete, partial, and failed requests. The waveform pipeline does not remove instrument response automatically; verify the response metadata, channel selection, and waveform quality required by your analysis.
 
+## Recommended package examples
+
+[`examples/package_workflow`](examples/package_workflow) contains a refined `00`–`05` workflow that calls the package functions directly. Edit its shared `settings.py`, then either run each numbered script or execute the complete sequence:
+
+```bash
+python examples/package_workflow/run_all.py
+```
+
+The numbered scripts write actual output paths to `example_run/workflow_state.json`. This removes the hard-coded catalogue, station, waveform, and correlation run hashes used by the original scripts. See the [package-workflow guide](examples/package_workflow/README.md) for the individual commands and initial smoke-run limits.
+
 ## Original workflow examples
 
 The user-supplied scripts and notebook are preserved unchanged in [`examples/original_workflow`](examples/original_workflow). They provide the original scientific workflow and are useful for comparing the package API with the source material:
@@ -285,7 +295,7 @@ The user-supplied scripts and notebook are preserved unchanged in [`examples/ori
 | `05_plot_coda_correlation_and_wiggles.py` | `pycctools.plotting` |
 | `libgcc.py` | `pycctools.signal` |
 
-The original examples retain their original constants, hard-coded run paths, and behavior. Use the package modules for the corrected, configurable workflow described above.
+The original examples retain their original constants, hard-coded run paths, and behavior. Use `examples/package_workflow` for the corrected, configurable version.
 
 ## Validation
 
